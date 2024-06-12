@@ -100,6 +100,27 @@ const { toast } = useToast();
       className='bg-yellow-500'
       />
 
+      {!callDetails?(
+        <MeetingModal
+        isOpen={meetingState === 'isScheduleMeeting'}
+        onClose={() => setmeetingState(undefined)}
+        title='Create Meeting'
+        handleClick ={CreateMeeting}
+      />
+      ): (
+        <MeetingModal
+        isOpen={meetingState === 'isScheduleMeeting'}
+        onClose={() => setmeetingState(undefined)}
+        title='meeting created'
+        handleClick ={() => {
+          // navigator.clipboard.writeText(MeetingLink);
+          // toast({title: link copied to clipboard})
+        }}
+        image='/icons/checked.svg'
+        buttonIcon='/icons/copy.svg'
+        buttonText='copy meeting link'
+        />
+      )}
       <MeetingModal
         isOpen={meetingState === 'isInstantMeeting'}
         onClose={() => setmeetingState(undefined)}
